@@ -1,17 +1,18 @@
-//
-//  ColimaToggleApp.swift
-//  ColimaToggle
-//
-//  Created by kuafu on 26.05.25.
-//
-
 import SwiftUI
 
 @main
 struct ColimaToggleApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            Button("Stop Colima and Quit") {
+                appDelegate.shutdownAndExitWithWindow()
+            }
+        } label: {
+            Label("Colima", image: "ColimaIcon")
         }
+        .menuBarExtraStyle(.window)
     }
+
 }
